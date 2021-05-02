@@ -1,0 +1,32 @@
+*{font-size: 1.5rem;
+    }
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #daf1f4;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: black;
+    width: fit-content;
+}
+
+input {
+    margin: 0 0.5rem 0 0.5rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #daf1f4;
+    color: black;
+    }
+
+::placeholder {
+    color: #404040;
+}
+
+.Container{
+    padding: 1rem 2rem;
+}
+
+ 

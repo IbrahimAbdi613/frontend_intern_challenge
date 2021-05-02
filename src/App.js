@@ -1,12 +1,13 @@
 import React from "react";
 import SearchBox from "./components/SearchBox";
+import SideBar from "./components/SideBar";
+import "./stylesheets/App.css";   
 
 let App = () => {
 	return (
-		<div>
-			<h2>Search Movies</h2>
-			<br />
-			<SearchBox    />
+		<div className="flexbox-container">
+			<SideBar className="flexbox-container-1" />
+			<SearchBox />
 		</div>
 	);
 };

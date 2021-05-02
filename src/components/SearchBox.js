@@ -1,4 +1,6 @@
 import React from "react";
+import SearchResult from "./SearchResult";
+import "../stylesheets/SearchBox.css";
 
 class SearchBox extends React.Component {
 	constructor(props) {
@@ -12,23 +14,43 @@ class SearchBox extends React.Component {
 
 	async handleSearch(event) {
 		const {value} = event.target;
-		let movies = await (
+		let data = await (
 			await fetch("http://www.omdbapi.com/?apikey=3957fc4e&s=" + value)
 		).json();
-		this.setState({userinput: value, searchResult: movies.Search});
-	}
+        let movies = [];
+				if (data.Search) {
+					movies = data.Search.map((movie) => {
+						return (
+							<SearchResult
+								Title={movie.Title}
+								Poster={movie.Poster}
+								Year={movie.Year}
+							/>
+						);
+					});
+				}
+				this.setState({
+					userinput: value,
+					searchResult: movies,
+				});
+    }
 
 	render() {
-		return (
-			<div>
-				<input
-					type="text"
-					value={this.state.userinput}
-					placeholder="search here"
-					onChange={this.handleSearch}
-				/>
-			</div>
-		);
+        return (
+					<div className="Container">
+						<h2>Search Movies</h2>
+						<div className="input-wrapper">
+							<div className="fa fa-search"></div>
+							<input
+								type="text"
+								placeholder="Search here"
+								onChange={this.handleSearch}
+							/>
+							<div className="fa fa-times"></div>
+						</div>
+						{this.state.searchResult}
+					</div>
+				);
 	}
 }
 

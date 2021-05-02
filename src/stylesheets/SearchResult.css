@@ -1,0 +1,19 @@
+.SearchResult-Container{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.5));
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.Title{
+    font-size: 70%;
+    vertical-align: top;
+    padding: 0 1rem;
+}
+
+.SearchImage{
+    border-radius: 15px;
+    max-width:100%;
+}

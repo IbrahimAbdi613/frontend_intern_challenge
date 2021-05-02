@@ -1,0 +1,8 @@
+.SideBarItem{
+    display: inline-block;
+    margin: 0 0 2rem 0;
+}
+label{
+    font-size:x-large;
+    padding: 1rem ;
+}
