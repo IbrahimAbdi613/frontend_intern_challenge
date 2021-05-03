@@ -5,7 +5,7 @@ let SideBarItem = (props) => {
 	return (
 		<div>
 			<div className="SideBarItem">
-				<i class={props.icon}></i>
+				<i className={props.icon}></i>
 				<label className="SideBarLabel">{props.name}</label>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 .SideBarItem{
     display: inline-block;
     margin: 0 0 2rem 0;
+    position:sticky;
 }
 label{
     font-size:x-large;
