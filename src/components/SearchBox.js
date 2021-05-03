@@ -8,38 +8,99 @@ class SearchBox extends React.Component {
 		this.state = {
 			userinput: "",
 			searchResult: [],
+			numOfResults: 0,
+			page: 1,
 		};
 		this.handleSearch = this.handleSearch.bind(this);
-		this.handleClick = this.handleClick.bind(this);
+		this.handleClear = this.handleClear.bind(this);
+		this.handlePageNext = this.handlePageNext.bind(this);
+		this.handlePagePrev = this.handlePagePrev.bind(this);
+		this.renderResults = this.renderResults.bind(this);
 	}
 
 	async handleSearch(event) {
 		const {value} = event.target;
-		let data = await (
-			await fetch("http://www.omdbapi.com/?apikey=3957fc4e&s=" + value)
-		).json();
+		this.setState({userinput: value});
 		let movies = [];
+		let data = await (
+			await fetch(
+				`http://www.omdbapi.com/?apikey=3957fc4e&s=${value}&page=${this.state.page}`
+			)
+		).json();
 		if (data.Search) {
-			movies = data.Search.map((movie) => {
-				return (
-					<SearchResult
-						Title={movie.Title}
-						Poster={movie.Poster}
-						Year={movie.Year}
-					/>
-				);
+			movies = this.renderResults(data.Search);
+			this.setState({searchResult: movies, numOfResults: data.totalResults});
+		}
+	}
+
+	async handlePageNext() {
+		let movies = [];
+		let data = await (
+			await fetch(
+				`http://www.omdbapi.com/?apikey=3957fc4e&s=${
+					this.state.userinput
+				}&page=${this.state.page + 1}`
+			)
+		).json();
+		if (data.Search) {
+			movies = this.renderResults(data.Search);
+			this.setState((prevState) => {
+				return {
+					page: prevState.page + 1,
+					searchResult: movies,
+				};
 			});
 		}
-		this.setState({
-			userinput: value,
-			searchResult: movies,
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: "smooth",
 		});
 	}
 
-	handleClick() {
+	async handlePagePrev() {
+		let movies = [];
+		let data = await (
+			await fetch(
+				`http://www.omdbapi.com/?apikey=3957fc4e&s=${
+					this.state.userinput
+				}&page=${this.state.page - 1}`
+			)
+		).json();
+		if (data.Search) {
+			movies = this.renderResults(data.Search);
+			this.setState((prevState) => {
+				return {
+					page: prevState.page - 1,
+					searchResult: movies,
+				};
+			});
+		}
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: "smooth",
+		});
+	}
+
+	handleClear() {
 		this.setState({
 			userinput: "",
 			searchResult: [],
+			numOfResults: 0,
+			page: 1,
+		});
+	}
+
+	renderResults(movies) {
+		return movies.map((movie) => {
+			return (
+				<SearchResult
+					Title={movie.Title}
+					Poster={movie.Poster}
+					Year={movie.Year}
+				/>
+			);
 		});
 	}
 
@@ -55,9 +116,21 @@ class SearchBox extends React.Component {
 						placeholder="Search here"
 						onChange={this.handleSearch}
 					/>
-					<div className="fa fa-times" onClick={this.handleClick}></div>
+					<div className="fa fa-times" onClick={this.handleClear}></div>
 				</div>
 				{this.state.searchResult}
+				<div className="buttons">
+					{this.state.page > 1 && (
+						<button onClick={this.handlePagePrev} className="NextButton">
+							Previous
+						</button>
+					)}
+					{this.state.numOfResults > this.state.page * 10 && (
+						<button onClick={this.handlePageNext} className="PrevButton">
+							Next
+						</button>
+					)}
+				</div>
 			</div>
 		);
 	}

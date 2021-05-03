@@ -1,0 +1,12 @@
+.profileContainer{
+    text-align: center;
+}
+.profileImage{
+    border-radius: 2rem;
+}
+
+.profileName{
+    font-weight: 1000;
+    font-size: x-large;
+    color: #1b4670;
+}

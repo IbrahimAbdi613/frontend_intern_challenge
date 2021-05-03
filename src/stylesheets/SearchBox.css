@@ -1,5 +1,5 @@
 *{font-size: 1.5rem;
-    }
+}
 
 .input-wrapper {
     display: flex;
@@ -19,7 +19,7 @@ input {
     outline: none;
     background: #daf1f4;
     color: black;
-    }
+}
 
 ::placeholder {
     color: #404040;
@@ -29,4 +29,18 @@ input {
     padding: 1rem 2rem;
 }
 
+.buttons{
+    text-align: center;
+}
+
+Button{
+    font-size: x-large;
+    margin: 2%;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    background:linear-gradient(to left,#43cea2,#185a9d);
+    color: white;
+    border-color:white ;
+
+}
  

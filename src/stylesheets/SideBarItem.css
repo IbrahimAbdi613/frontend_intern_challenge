@@ -1,9 +1,13 @@
 .SideBarItem{
-    display: inline-block;
-    margin: 0 0 2rem 0;
-    position:sticky;
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    padding: 1rem;
 }
 label{
+    display: inline-block;
+    vertical-align: top;
     font-size:x-large;
-    padding: 1rem ;
+    vertical-align: center;
+    top:bottom;
+    padding: 0 0 0 10px;
 }
