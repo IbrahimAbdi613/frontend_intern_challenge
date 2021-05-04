@@ -9,7 +9,13 @@ let SideBar = () => {
 	const user = useSelector((state) => state.user);
 	return (
 		<div className="SideBar">
-			{user && <Profile img={user.photoURL} name={user.displayName} />}
+			{user && (
+				<Profile
+					img={user.photoURL}
+					name={user.displayName}
+					userId={user.uid}
+				/>
+			)}
 			<SideBarItem name="Nomintations" icon="fas fa-trophy" />
 			<SideBarItem name="Trash" icon="fas fa-trash" />
 		</div>

@@ -1,8 +1,13 @@
 .profileContainer{
+    display: grid;
+    grid-template-columns: 1fr;
     text-align: center;
+
 }
 .profileImage{
     border-radius: 2rem;
+    text-align: center;
+
 }
 
 .profileName{

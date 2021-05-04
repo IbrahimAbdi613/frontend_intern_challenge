@@ -1,6 +1,8 @@
 import React from "react";
 import SearchResult from "./SearchResult";
 import "../stylesheets/SearchBox.css";
+require("dotenv").config();
+
 
 class SearchBox extends React.Component {
 	constructor(props) {
@@ -11,6 +13,7 @@ class SearchBox extends React.Component {
 			numOfResults: 0,
 			page: 1,
 		};
+		this.apiKey = process.env.REACT_APP_IMDB_API_KEY;
 		this.handleSearch = this.handleSearch.bind(this);
 		this.handleClear = this.handleClear.bind(this);
 		this.handlePageNext = this.handlePageNext.bind(this);
@@ -24,7 +27,7 @@ class SearchBox extends React.Component {
 		let movies = [];
 		let data = await (
 			await fetch(
-				`http://www.omdbapi.com/?apikey=3957fc4e&s=${value}&page=${this.state.page}`
+				`http://www.omdbapi.com/?apikey=${this.apiKey}=${value}&page=${this.state.page}`
 			)
 		).json();
 		if (data.Search) {
@@ -37,7 +40,7 @@ class SearchBox extends React.Component {
 		let movies = [];
 		let data = await (
 			await fetch(
-				`http://www.omdbapi.com/?apikey=3957fc4e&s=${
+				`http://www.omdbapi.com/?apikey=${this.apiKey}=${
 					this.state.userinput
 				}&page=${this.state.page + 1}`
 			)
@@ -62,7 +65,7 @@ class SearchBox extends React.Component {
 		let movies = [];
 		let data = await (
 			await fetch(
-				`http://www.omdbapi.com/?apikey=3957fc4e&s=${
+				`http://www.omdbapi.com/?apikey=${this.apiKey}=${
 					this.state.userinput
 				}&page=${this.state.page - 1}`
 			)
