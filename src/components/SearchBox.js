@@ -102,6 +102,7 @@ class SearchBox extends React.Component {
 					Title={movie.Title}
 					Poster={movie.Poster}
 					Year={movie.Year}
+					MovieId={movie.imdbID}
 				/>
 			);
 		});

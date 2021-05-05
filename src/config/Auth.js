@@ -1,7 +1,7 @@
 import "firebase/firestore";
 import "firebase/auth";
 import firebase from "firebase/app";
-import {logUser} from "./DB";
+import {logUser,AddMovie} from "./DB";
 
 firebase.initializeApp({
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -21,6 +21,5 @@ export async function GoogleLogin() {
 }
 export async function GoogleLogout() {
 	const auth = firebase.auth();
-
 	await auth.signOut();
 }
