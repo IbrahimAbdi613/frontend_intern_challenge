@@ -27,7 +27,7 @@ class SearchBox extends React.Component {
 		let movies = [];
 		let data = await (
 			await fetch(
-				`http://www.omdbapi.com/?apikey=${this.apiKey}=${value}&page=${this.state.page}`
+				`https://www.omdbapi.com/?apikey=${this.apiKey}=${value}&page=${this.state.page}`
 			)
 		).json();
 		if (data.Search) {
@@ -40,7 +40,7 @@ class SearchBox extends React.Component {
 		let movies = [];
 		let data = await (
 			await fetch(
-				`http://www.omdbapi.com/?apikey=${this.apiKey}=${
+				`https://www.omdbapi.com/?apikey=${this.apiKey}=${
 					this.state.userinput
 				}&page=${this.state.page + 1}`
 			)
@@ -65,7 +65,7 @@ class SearchBox extends React.Component {
 		let movies = [];
 		let data = await (
 			await fetch(
-				`http://www.omdbapi.com/?apikey=${this.apiKey}=${
+				`https://www.omdbapi.com/?apikey=${this.apiKey}=${
 					this.state.userinput
 				}&page=${this.state.page - 1}`
 			)
