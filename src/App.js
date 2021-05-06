@@ -14,7 +14,8 @@ let App = () => {
 	const db = firebase.firestore();
 
 		return (
-		<div>
+			<div>
+				<h1>{process.env.REACT_APP_IMDB_API_KEY}</h1>
 			{!user ? (
 				<button
 					onClick={async () => {
