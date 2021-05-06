@@ -4,11 +4,14 @@ import {AddMovie} from '../config/DB'
 import {useSelector} from "react-redux";
 import {useState} from 'react';
 
+
 let SearchResult = (props) => {
 	const user = useSelector((state) => state.user);
 	const [style, setStyle] = useState({position: 'relative', left: '1.5rem'});
 
+
 	function handleAdd() {
+		console.log(user)
 		AddMovie(user, props.MovieId);
 		setStyle(prevState => {
 			return {...prevState, color: 'red'}

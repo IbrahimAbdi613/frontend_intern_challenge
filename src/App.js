@@ -5,18 +5,27 @@ import SideBar from "./components/SideBar";
 import {GoogleLogin, GoogleLogout} from "./config/Auth";
 import {login, logout} from "./actions";
 import {useDispatch, useSelector} from "react-redux";
+import "firebase/firestore";
+import firebase from "firebase/app";
 
 let App = () => {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user);
-	return (
+	const db = firebase.firestore();
+
+		return (
 		<div>
 			{!user ? (
 				<button
 					onClick={async () => {
-						try {
-							dispatch(login(await GoogleLogin()));
-						} catch (error) {
+							try {
+								let userState = await GoogleLogin()
+								dispatch(login(userState));
+								let querySnapshot = await db.collection("userNominations").where("userId", "==", userState.userId).onSnapshot((querySnapshot) => {
+									querySnapshot.docs.map((doc) => dispatch(login(doc.data())))
+								})
+							}
+						 catch (error) {
 							console.error(error);
 						}
 					}}
@@ -44,6 +53,7 @@ let App = () => {
 			</div>
 		</div>
 	);
+
 };
 
 export default App;
