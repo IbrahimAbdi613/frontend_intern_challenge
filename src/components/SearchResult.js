@@ -1,8 +1,9 @@
 import React from "react";
 import "../stylesheets/SearchResult.css";
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {addMovie, removeMovie} from "../actions";
+import {addMovieFromState, removeMovieFromState} from "../actions";
+import {AddMovie, removeMovie} from '../config/DB'
 
 
 
@@ -13,19 +14,20 @@ let SearchResult = (props) => {
 	const dispatch = useDispatch();
 
 	async function handleAdd() {
-		dispatch(addMovie(user, props.MovieId))
+		console.log(props.MovieId)
+		dispatch(addMovieFromState(await AddMovie(user, props.MovieId)))
 		setIsNominated(true)
 		setStyle(prevState => {
 			return {...prevState, color: 'red'}
 		})
 	}
 	async function handleRemove() {
-		dispatch(removeMovie(user, props.MovieId))
+		console.log(props.MovieId)
+		dispatch(removeMovieFromState(await removeMovie(user, props.MovieId)))
 		setIsNominated(false)
 		setStyle(prevState => {
 			return {...prevState, color: 'red'}
 		})
-
 	}
 	return (
 		<div className="SearchResult-Container">

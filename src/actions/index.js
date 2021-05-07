@@ -11,18 +11,16 @@ export const logout = () => {
 	};
 };
 
-export const addMovie = (user, movie) => {
+export const addMovieFromState = (user) => {
 	return {
 		type: "ADD",
-		movies: movie,
 		user: user
 	};
 };
 
-export const removeMovie = (user, movie) => {
+export const removeMovieFromState = (user) => {
 	return {
 		type: "REMOVE",
-		movies: movie,
 		user: user
 	};
 };

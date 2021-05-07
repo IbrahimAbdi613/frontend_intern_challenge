@@ -6,6 +6,7 @@ require("dotenv").config();
 
 
 class SearchBox extends React.Component {
+
 	constructor(props) {
 		super(props);
 		this.state = {

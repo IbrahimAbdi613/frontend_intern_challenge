@@ -7,9 +7,9 @@ const userUpdates = (state = null, action) => {
 		case "LOGOUT":
 			return null;
 		case "ADD":
-			return AddMovie(action.user, action.movies)
+			return action.user
 		case "REMOVE":
-			return removeMovie(action.user, action.movies)
+			return action.user
 		default:
 			return state;
 	}

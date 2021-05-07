@@ -17,20 +17,21 @@ let SideBarItem = (props) => {
 						width: "fit-content",
 						height: "fit-content"
 					}}>
-
-						<p style={{
-							position: 'absolute',
-							top: "-50px",
-							right: " -23px",
-							fontSize: "80%",
-							backgroundColor: "#ff6600",
-							color: "white",
-							fontWeight: 500,
-							borderRadius: "45px",
-							padding: "2px 10px"
-						}}>
-							{user != null && user[props.name] != undefined ? user[props.name].length : ""}
+						{(user != null && user[props.name] != undefined) &&
+							<p style={{
+								position: 'absolute',
+								top: "-50px",
+								right: " -23px",
+								fontSize: "80%",
+								backgroundColor: "#ff6600",
+								color: "white",
+								fontWeight: 500,
+								borderRadius: "45px",
+								padding: "2px 10px"
+							}}>
+							{user[props.name].length}
 						</p>
+						}
 					</i>
 				</div>
 			</div>
