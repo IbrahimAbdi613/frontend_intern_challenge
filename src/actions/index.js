@@ -5,24 +5,25 @@ export const login = (user) => {
 	};
 };
 
-
 export const logout = () => {
 	return {
 		type: "LOGOUT",
 	};
 };
 
-export const getNominations = (movies) => {
+export const addMovie = (user, movie) => {
 	return {
-		type: "GET",
-		movies: movies,
+		type: "ADD",
+		movies: movie,
+		user: user
 	};
 };
 
-export const getTrash = (movies) => {
+export const removeMovie = (user, movie) => {
 	return {
-		type: "GET",
-		movies: movies,
+		type: "REMOVE",
+		movies: movie,
+		user: user
 	};
 };
 

@@ -1,21 +1,31 @@
 import React from "react";
 import "../stylesheets/SearchResult.css";
-import {AddMovie} from '../config/DB'
-import {useSelector} from "react-redux";
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {addMovie, removeMovie} from "../actions";
+
 
 
 let SearchResult = (props) => {
 	const user = useSelector((state) => state.user);
 	const [style, setStyle] = useState({position: 'relative', left: '1.5rem'});
+	const [isNominated, setIsNominated] = useState(props.isNominated)
+	const dispatch = useDispatch();
 
-
-	function handleAdd() {
-		console.log(user)
-		AddMovie(user, props.MovieId);
+	async function handleAdd() {
+		dispatch(addMovie(user, props.MovieId))
+		setIsNominated(true)
 		setStyle(prevState => {
 			return {...prevState, color: 'red'}
 		})
+	}
+	async function handleRemove() {
+		dispatch(removeMovie(user, props.MovieId))
+		setIsNominated(false)
+		setStyle(prevState => {
+			return {...prevState, color: 'red'}
+		})
+
 	}
 	return (
 		<div className="SearchResult-Container">
@@ -24,7 +34,11 @@ let SearchResult = (props) => {
 				<p className="Title">
 					{props.Title} ({props.Year})
 				</p>
-				<div className="fas fa-trophy" onClick={handleAdd} style = {style} ></div>
+				{
+					isNominated ?
+						<div className="fas fa-trash" onClick={handleRemove} style={style} ></div> :
+						<div className="fas fa-trophy" onClick={handleAdd} style={style} ></div>
+				}
 			</div>
 		</div>
 	);

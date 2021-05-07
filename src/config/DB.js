@@ -22,39 +22,42 @@ export async function logUser(user) {
 
 
 export async function AddMovie(user, Movieid) {
-	const db = firebase.firestore();
-	db.collection("userNominations")
-		.where("userId", "==", user.userId)
-		.get()
-		.then((querySnapshot) => {
-			querySnapshot.forEach((doc) => {
+	let movies;
+	try {
+		const db = firebase.firestore();
+		let querySnapshot = await db.collection("userNominations").where("userId", "==", user.userId).get()
+		querySnapshot.forEach((doc) => {
 			let userNominationsRef = db.collection("userNominations").doc(doc.id);
-				userNominationsRef.update({
-    				Nominations: firebase.firestore.FieldValue.arrayUnion(Movieid)
-				});
+			userNominationsRef.update({
+				Nominations: firebase.firestore.FieldValue.arrayUnion(Movieid),
+				Trash: firebase.firestore.FieldValue.arrayRemove(Movieid)
 			});
-		})
-		.catch((error) => {
-			console.error("Error getting documents: ", error);
 		});
+		querySnapshot = await db.collection("userNominations").where("userId", "==", user.userId).get()
+		querySnapshot.forEach(doc => movies = doc.data());
+		return movies;
+	} catch (error) {
+		console.error("Error getting documents: ", error);
+	}
 }
 
 export async function removeMovie(user, Movieid) {
-	const db = firebase.firestore();
-	db.collection("userNominations")
-		.where("userId", "==", user.userId)
-		.get()
-		.then((querySnapshot) => {
-			querySnapshot.forEach((doc) => {
+	let movies;
+	try {
+		const db = firebase.firestore();
+		let querySnapshot = await db.collection("userNominations").where("userId", "==", user.userId).get()
+		querySnapshot.forEach((doc) => {
 			let userNominationsRef = db.collection("userNominations").doc(doc.id);
-				userNominationsRef.update({
-					Nominations: firebase.firestore.FieldValue.arrayRemove(Movieid),
-					Trash: firebase.firestore.FieldValue.arrayUnion(Movieid)
-				});
+			userNominationsRef.update({
+				Nominations: firebase.firestore.FieldValue.arrayRemove(Movieid),
+				Trash: firebase.firestore.FieldValue.arrayUnion(Movieid)
 			});
-		})
-		.catch((error) => {
-			console.error("Error getting documents: ", error);
 		});
+		querySnapshot = await db.collection("userNominations").where("userId", "==", user.userId).get()
+		querySnapshot.forEach(doc => movies = doc.data());
+		return movies;
+	} catch (error) {
+		console.error("Error getting documents: ", error);
+	}
 }
 

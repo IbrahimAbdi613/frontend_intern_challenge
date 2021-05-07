@@ -1,6 +1,7 @@
 import React from "react";
 import SearchResult from "./SearchResult";
 import "../stylesheets/SearchBox.css";
+import {connect} from 'react-redux'
 require("dotenv").config();
 
 
@@ -97,12 +98,14 @@ class SearchBox extends React.Component {
 
 	renderResults(movies) {
 		return movies.map((movie) => {
+			const isNominated = this.props.user.Nominations.includes(movie.imdbID)
 			return (
 				<SearchResult
 					Title={movie.Title}
 					Poster={movie.Poster}
 					Year={movie.Year}
 					MovieId={movie.imdbID}
+					isNominated={isNominated}
 				/>
 			);
 		});
@@ -140,4 +143,10 @@ class SearchBox extends React.Component {
 	}
 }
 
-export default SearchBox;
+const mapStateToProps = (state) => {
+	return {
+		user: state.user
+	}
+}
+
+export default connect(mapStateToProps)(SearchBox);

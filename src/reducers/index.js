@@ -1,9 +1,6 @@
-import LoggedReducer from "./isLogged";
-import MovieReducer from "./MovieList";
-
+import userUpdates from "./userUpdates";
 import {combineReducers} from "redux";
 
 export default combineReducers({
-	user: LoggedReducer,
-	nominationList: MovieReducer,
+	user: userUpdates,
 });

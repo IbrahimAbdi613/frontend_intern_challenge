@@ -15,8 +15,7 @@ let App = () => {
 
 		return (
 			<div>
-				<h1>{process.env.REACT_APP_IMDB_API_KEY}</h1>
-			{!user ? (
+				{!user ? (
 				<button
 					onClick={async () => {
 							try {
