@@ -15,22 +15,25 @@ let SideBarItem = (props) => {
 						alignItems: "center",
 						justifyContent: "center",
 						width: "fit-content",
-						height: "fit-content"
+						height: "fit-content",
+						margin: "0.3vw 0 0 1.5vw"
 					}}>
 						{(user != null && user[props.name] != undefined) &&
-							<p style={{
+							<label style={{
 								position: 'absolute',
-								top: "-50px",
-								right: " -23px",
+							top: "-3.5vw",
+							right: " -3.5vw",
 								fontSize: "80%",
 								backgroundColor: "#ff6600",
 								color: "white",
-								fontWeight: 500,
-								borderRadius: "45px",
-								padding: "2px 10px"
+							fontWeight: 500,
+							padding: "2px 10px",
+							borderRadius: "50px",
+							width: "1px"
+
 							}}>
 							{user[props.name].length}
-						</p>
+						</label>
 						}
 					</i>
 				</div>

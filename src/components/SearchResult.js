@@ -14,7 +14,6 @@ let SearchResult = (props) => {
 	const dispatch = useDispatch();
 
 	async function handleAdd() {
-		console.log(props.MovieId)
 		dispatch(addMovieFromState(await AddMovie(user, props.MovieId)))
 		setIsNominated(true)
 		setStyle(prevState => {
@@ -22,7 +21,6 @@ let SearchResult = (props) => {
 		})
 	}
 	async function handleRemove() {
-		console.log(props.MovieId)
 		dispatch(removeMovieFromState(await removeMovie(user, props.MovieId)))
 		setIsNominated(false)
 		setStyle(prevState => {

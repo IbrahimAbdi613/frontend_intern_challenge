@@ -5,13 +5,14 @@
 
 }
 .profileImage{
-    border-radius: 2rem;
+    border-radius: 50vw;
     text-align: center;
-
+    height: 10vw;
+    width: 10vw;
 }
 
 .profileName{
     font-weight: 1000;
-    font-size: x-large;
+    font-size: 1vw;
     color: #1b4670;
 }
