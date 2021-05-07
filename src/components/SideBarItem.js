@@ -17,22 +17,20 @@ let SideBarItem = (props) => {
 						width: "fit-content",
 						height: "fit-content"
 					}}>
-						<i class="far fa-circle" style={{
+
+						<p style={{
 							position: 'absolute',
-							top: "-20px",
-							right: " -40px",
+							top: "-50px",
+							right: " -23px",
 							fontSize: "80%",
 							backgroundColor: "#ff6600",
+							color: "white",
+							fontWeight: 500,
+							borderRadius: "45px",
+							padding: "2px 10px"
 						}}>
-							<label style={{
-								position: 'relative',
-								right: "30px",
-								color: "white",
-								fontWeight: 500,
-							}}>
-								{user != null && user.Trash != undefined ? user.Trash.length : ""}
-							</label>
-						</i>
+							{user != null && user[props.name] != undefined ? user[props.name].length : ""}
+						</p>
 					</i>
 				</div>
 			</div>

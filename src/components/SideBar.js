@@ -16,7 +16,7 @@ let SideBar = () => {
 					userId={user.uid}
 				/>
 			)}
-			<SideBarItem name="Nomintations" icon="fas fa-trophy" />
+			<SideBarItem name="Nominations" icon="fas fa-trophy" />
 			<SideBarItem name="Trash" icon="fas fa-trash" />
 		</div>
 	);
