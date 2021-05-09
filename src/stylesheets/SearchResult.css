@@ -1,10 +1,10 @@
 .SearchResult-Container{
     display: grid;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 3fr 10fr;
     background: linear-gradient(to right bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.5));
     border-radius: 1rem;
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 }
 
 .Title{
@@ -18,6 +18,15 @@
     max-width:100%;
 }
 
-.ScoreSelector{
-width: fit-content;
+@media only screen and (max-width:550px){
+    .SearchImage{
+        border-radius: 0.5vw;
+        max-width:100%;
+    }
+    .SearchResult-Container{
+        margin: 0.5rem 0.5rem;
+        grid-template-columns: 1fr ;
+
+    }
+
 }

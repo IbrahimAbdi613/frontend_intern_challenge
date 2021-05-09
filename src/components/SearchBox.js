@@ -148,8 +148,9 @@ class SearchBox extends React.Component {
 						></motion.div>
 					</motion.div>
 				</div>
-
-				{this.state.searchResult}
+				<div className="searchResultContainer">
+					{this.state.searchResult}
+				</div>
 				<div className="buttons">
 					{this.state.page > 1 && (
 						<motion.div
@@ -172,6 +173,7 @@ class SearchBox extends React.Component {
 						</motion.div>
 					)}
 				</div>
+
 			</motion.div>
 		);
 	}

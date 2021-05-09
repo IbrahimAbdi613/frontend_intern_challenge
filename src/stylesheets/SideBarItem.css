@@ -25,11 +25,22 @@
 .link{
     text-decoration: none;
 }
-
+.iconDiv{
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    left: 13vw;
+    top: 2vw;
+}
 @media only screen and (max-width:550px){
     .SideBarItem{
         margin:  5% 0 0 5%;
+    }
+    .iconDiv{
+        width: fit-content;
+        height: fit-content;
         position: relative;
-        top:10vw;
+        left: 85%;
+        top: 10%;
     }
 }

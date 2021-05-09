@@ -2,7 +2,7 @@ import React from "react";
 import "../stylesheets/SearchResult.css";
 import {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {addMovieFromState, removeMovieFromState} from "../actions";
+import {addMovieFromState, removeMovieFromState, addMovie, RemoveMovie} from "../actions";
 import {AddMovie, removeMovie} from '../config/DB'
 import {motion} from 'framer-motion'
 
@@ -13,12 +13,14 @@ let SearchResult = (props) => {
 	const dispatch = useDispatch();
 
 	async function handleAdd() {
-		dispatch(addMovieFromState(await AddMovie(user, props.MovieId)))
 		setIsNominated(true)
+		if (user.userId)
+			dispatch(addMovieFromState(await AddMovie(user, props.MovieId)))
 	}
 	async function handleRemove() {
-		dispatch(removeMovieFromState(await removeMovie(user, props.MovieId)))
 		setIsNominated(false)
+		if (user.userId)
+			dispatch(removeMovieFromState(await removeMovie(user, props.MovieId)))
 	}
 	return (
 		<motion.div

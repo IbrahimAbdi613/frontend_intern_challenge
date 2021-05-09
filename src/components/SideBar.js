@@ -6,25 +6,24 @@ import Profile from "./Profile";
 import {Link} from 'react-router-dom'
 
 
-let SideBar = () => {
-	const user = useSelector((state) => state.user);
+let SideBar = (props) => {
 	return (
 		<div className="SideBar">
-			{user && (
+			{props.user && (
 				<Profile
-					img={user.photoURL}
-					name={user.displayName}
-					userId={user.uid}
+					img={props.user.photoURL}
+					name={props.user.displayName}
+					userId={props.user.uid}
 				/>
 			)}
 			<Link to='/' className="link">
 				<SideBarItem name="Search" icon="fas fa-search" color='#FFF' />
 			</Link>
 			<Link to='/Nominations' className="link">
-				<SideBarItem name="Nominations" icon="fas fa-trophy" color='#DAA520' />
+				<SideBarItem name="Nominations" icon="fas fa-trophy" color='#DAA520' user={props.user} />
 			</Link>
 			<Link to='/Trash' className="link">
-				<SideBarItem name="Trash" icon="fas fa-trash-alt" color='#E50000' />
+				<SideBarItem name="Trash" icon="fas fa-trash-alt" color='#E50000' user={props.user} />
 			</Link>
 		</div>
 	);

@@ -25,4 +25,8 @@
     .profileName{
         font-size: 1.5rem;
     }
+    .profileContainer{
+        grid-template-columns: 1fr 2.7fr;
+        margin: 0;
+    }
 }

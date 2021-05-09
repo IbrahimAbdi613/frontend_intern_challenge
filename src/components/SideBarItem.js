@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import {motion} from 'framer-motion'
 
 let SideBarItem = (props) => {
-	const user = useSelector((state) => state.user);
+	const user = props.user
 	return (
 		<div>
 			<motion.div
@@ -14,13 +14,7 @@ let SideBarItem = (props) => {
 			>
 				<label className="SideBarLabel">{props.name}
 				</label>
-				<div style={{
-					width: "fit-content",
-					height: 'fit-content',
-					position: "absolute",
-					left: "13vw",
-					top: "2vw",
-				}}>
+				<div className="iconDiv">
 					<i className={props.icon} style={{
 						position: "relative",
 						display: "flex",

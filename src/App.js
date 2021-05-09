@@ -9,7 +9,6 @@ import {useSelector} from "react-redux";
 import {motion} from 'framer-motion'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
-
 let App = () => {
 	const user = useSelector((state) => state.user);
 	return (
@@ -25,9 +24,9 @@ let App = () => {
 					<span role="img" aria-label="Popcorn">🍿</span>
 				</motion.div>
 				{
-					user ? (
+					(user || localStorage.user) ? (
 						<div className="flexbox-container">
-							<SideBar className="flexbox-container-1" />
+							<SideBar className="flexbox-container-1" user={user} />
 							<Switch>
 								<Route path="/" exact component={SearchBox} />
 								<Route

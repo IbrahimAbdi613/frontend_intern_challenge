@@ -11,7 +11,8 @@
 @media only screen and (max-width:550px){
     .SideBar{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        width: fit-content;
+        grid-template-columns: 1fr  ;
+        width: auto;
+        margin: 0;
     }
 }
