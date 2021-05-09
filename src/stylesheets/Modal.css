@@ -1,0 +1,16 @@
+.Modal{
+    position:fixed;
+    max-width: 20%;
+    margin: 0 auto;
+    padding: 1vw 1vw;
+    background-color:#1b4670;
+    color: white;
+    border-radius: 2rem;
+    text-align: center;   
+    top: 0;
+    left: 75%;
+    z-index: 1;
+}
+p{
+    font-size: 1.5vw;
+}

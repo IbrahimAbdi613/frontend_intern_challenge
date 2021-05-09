@@ -2,12 +2,14 @@ import React from 'react'
 import {motion} from 'framer-motion'
 import SearchResult from './SearchResult'
 import {connect} from 'react-redux';
+import Loader from './Loader'
 
 class Nominations extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             Nominations: [],
+            loading: true
         }
         this.apiKey = process.env.REACT_APP_IMDB_API_KEY;
     }
@@ -30,18 +32,20 @@ class Nominations extends React.Component {
                 />
             );
         });
-        this.setState({Nominations: Nominations})
+        this.setState({Nominations: Nominations, loading: false})
     }
 
     render() {
         return (
-            this.state.Nominations.length > 1 &&
-            <motion.div
-                initial={{x: 250}}
-                animate={{x: 0}}
-            >
-                {this.state.Nominations}
-            </motion.div>
+            this.state.loading ?
+                <Loader /> :
+                this.state.Nominations.length >= 1 &&
+                <motion.div
+                    initial={{x: 250}}
+                    animate={{x: 0}}
+                >
+                    {this.state.Nominations}
+                </motion.div>
         )
     }
 }

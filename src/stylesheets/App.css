@@ -4,7 +4,7 @@ body{
 }
 
 .flexbox-container{
-    margin: 10%;
+    margin: 5%;
     display: grid;
     grid-template-columns: 2fr 7fr;
     background: white;

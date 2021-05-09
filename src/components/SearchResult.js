@@ -45,6 +45,7 @@ let SearchResult = (props) => {
 						>
 						</motion.div>
 						:
+						user.Nominations.length < 5 &&
 						<motion.div
 							whileHover={{scale: 1.7}}
 							className="fas fa-trophy"
