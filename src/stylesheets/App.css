@@ -6,10 +6,35 @@ body{
 .flexbox-container{
     margin: 5%;
     display: grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: 2fr 7fr;
     background: white;
     background: linear-gradient(to left top, rgba(255,255,255,0.85), rgba(255,255,255,0.1));
     border-radius: 2rem;
 }
+.TitleContainer{
+    background: linear-gradient(to right , rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 5%;
+}
+
+.HeaderTitle{
+    color: #185a9d;
+    font-weight: 800;
+    width: fit-content;
+    margin: 1rem;
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width:550px){
+    .flexbox-container{
+        grid-template-columns: 1fr;
+        margin: 0;
+    }
+    .TitleContainer{
+        margin: 2%;
+    }
+}
+
 
 

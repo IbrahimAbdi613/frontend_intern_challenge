@@ -2,12 +2,34 @@
     display: grid;
     grid-template-columns: 2fr 5fr;
     padding: 1rem;
+    background-color:#1b4670;
+    margin: 1.5vh 0;
+    position: relative;
+    border-radius: 10vw;
+    color: white;
+    font-weight: 800;
+    text-decoration: none;
+    height: fit-content;
 }
-label{
-    display: inline-block;
-    vertical-align: top;
-    font-size:120%;
-    vertical-align: center;
-    top:bottom;
-    padding: 0 0 0 10px;
+
+.sideBarItemLabel{
+    position: relative;
+    bottom: 1vw;
+    font-size: 80%;
+    background-color:#FF4500 ;
+    color: white;
+    padding: 0.2vw 0.5vw;
+    border-radius: 10vw;
+    font-weight: 800;
+}
+.link{
+    text-decoration: none;
+}
+
+@media only screen and (max-width:550px){
+    .SideBarItem{
+        margin:  5% 0 0 5%;
+        position: relative;
+        top:10vw;
+    }
 }

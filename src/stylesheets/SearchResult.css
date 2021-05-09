@@ -1,6 +1,6 @@
 .SearchResult-Container{
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 10fr;
     background: linear-gradient(to right bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.5));
     border-radius: 1rem;
     padding: 1rem;
@@ -14,6 +14,10 @@
 }
 
 .SearchImage{
-    border-radius: 1vw;
+    border-radius: 0.5vw;
     max-width:100%;
+}
+
+.ScoreSelector{
+width: fit-content;
 }

@@ -1,6 +1,5 @@
 *{
-        font-size: 1.7vw;
-
+    font-size: 1.7vw;
 }
 
 .input-wrapper {
@@ -11,8 +10,10 @@
     padding: 0.5rem;
     border-radius: 0.5rem;
     color: black;
-    width: fit-content;
+    position: relative;
+    top:30%;
 }
+
 
 input {
     margin: 0 0.5rem 0 0.5rem;
@@ -21,7 +22,9 @@ input {
     outline: none;
     background: #daf1f4;
     color: black;
+    font-size: 3vw;
 }
+
 
 ::placeholder {
     color: #404040;
@@ -32,17 +35,9 @@ input {
 }
 
 .buttons{
-    text-align: center;
+    text-align:center;
 }
 
-Button{
-    font-size: x-large;
-    margin: 2%;
-    padding: 0.3rem;
-    border-radius: 0.5rem;
-    background:linear-gradient(to left,#43cea2,#185a9d);
-    color: white;
-    border-color:white ;
 
-}
+
  

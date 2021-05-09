@@ -1,7 +1,8 @@
 import React from "react";
 import SearchResult from "./SearchResult";
 import "../stylesheets/SearchBox.css";
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {motion} from 'framer-motion'
 require("dotenv").config();
 
 
@@ -29,7 +30,7 @@ class SearchBox extends React.Component {
 		let movies = [];
 		let data = await (
 			await fetch(
-				`https://www.omdbapi.com/?apikey=${this.apiKey}=${value}&page=${this.state.page}`
+				`https://www.omdbapi.com/?apikey=${this.apiKey}&s=${value}&page=${this.state.page}`
 			)
 		).json();
 		if (data.Search) {
@@ -113,33 +114,65 @@ class SearchBox extends React.Component {
 	}
 
 	render() {
+		const buttonStyle = {
+			backgroundColor: "#1b4670",
+			borderColor: "#1b4670",
+			margin: "5%",
+			color: "white",
+			padding: "1vw",
+			borderRadius: "0.5rem",
+			textAlign: "center"
+
+		}
 		return (
-			<div className="Container">
-				<h2>Search Movies</h2>
-				<div className="input-wrapper">
-					<div className="fa fa-search"></div>
-					<input
-						type="text"
-						value={this.state.userinput}
-						placeholder="Search here"
-						onChange={this.handleSearch}
-					/>
-					<div className="fa fa-times" onClick={this.handleClear}></div>
+			<motion.div
+				className="Container"
+				initial={{x: 250}}
+				animate={{x: 0}}
+			>
+				<div className="Container">
+					<motion.div className="input-wrapper"
+						whileHover={{scale: 1.1}}
+					>
+						<div className="fa fa-search"></div>
+						<input
+							type="text"
+							value={this.state.userinput}
+							placeholder="Search here"
+							onChange={this.handleSearch}
+						/>
+						<motion.div
+							className="fa fa-times"
+							onClick={this.handleClear}
+							whileHover={{scale: 1.7}}
+						></motion.div>
+					</motion.div>
 				</div>
+
 				{this.state.searchResult}
 				<div className="buttons">
 					{this.state.page > 1 && (
-						<button onClick={this.handlePagePrev} className="NextButton">
-							Previous
-						</button>
+						<motion.div
+							onClick={this.handlePagePrev}
+							className="fas fa-arrow-circle-left"
+							style={buttonStyle}
+							whileHover={{scale: 1.3}}
+
+						>
+						</motion.div>
 					)}
 					{this.state.numOfResults > this.state.page * 10 && (
-						<button onClick={this.handlePageNext} className="PrevButton">
-							Next
-						</button>
+						<motion.div
+							onClick={this.handlePageNext}
+							className="fas fa-arrow-circle-right"
+							style={buttonStyle}
+							whileHover={{scale: 1.3}}
+						>
+
+						</motion.div>
 					)}
 				</div>
-			</div>
+			</motion.div>
 		);
 	}
 }

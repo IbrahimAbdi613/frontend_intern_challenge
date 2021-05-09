@@ -1,7 +1,17 @@
 .SideBar{
+    grid-template-columns: 1fr;
     background: linear-gradient(to right bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.5));
     border-radius: 2rem;
     padding: 2rem ;
     font: 10%;
     width:10rem;
+    position: relative;
+}
+
+@media only screen and (max-width:550px){
+    .SideBar{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: fit-content;
+    }
 }
